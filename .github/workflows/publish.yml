@@ -5,13 +5,13 @@ on:
       push:   
         branches: [ "main" ]
         paths: 
-          - '.github/workflows/**.yml'
-          - '**Docker**'
+          - '.github/workflows/*.yml'
+          - 'Dockerfile'
       pull_request:
         branches: ["main"]
         paths: 
-          - '**.yml'
-          - '**Docker**'
+          - '.github/workflows/*.yml'
+          - 'Dockerfile'
         
 jobs:
   publish-env-crucible-docker-image:
