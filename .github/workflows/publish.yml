@@ -7,7 +7,6 @@ on:
         paths: 
           - '**.yml'
           - '**Docker**'
-
       pull_request:
         branches: ["main"]
         paths: 
