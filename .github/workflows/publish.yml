@@ -2,16 +2,16 @@ name: publish env-crucible
 on: 
   schedule:    
     - cron: '0 23 * * 6'  
-      push:   
-        branches: [ "main" ]
-        # paths: 
-        #   - '**.yml'
-        #   - 'Dockerfile'
-      pull_request:
-        branches: ["main"]
-        # paths: 
-        #   - '**.yml'
-        #   - 'Dockerfile'
+  push:   
+    branches: [ "main" ]
+    paths: 
+      - '**.yml'
+      - 'Dockerfile'
+  pull_request:
+    branches: ["main"]
+    paths: 
+      - '**.yml'
+      - 'Dockerfile'
         
 jobs:
   publish-env-crucible-docker-image:
