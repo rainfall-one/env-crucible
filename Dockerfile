@@ -3,8 +3,8 @@ LABEL org.opencontainers.image.authors="rajesh@rainfall.one"
 
     # Dependencies
   RUN apt-get update -y
-  RUN apt-get install -y build-essential
-  RUN apt-get install -y wget gnupg ca-certificates software-properties-common
+  RUN apt-get install -y build-essential wget 
+  RUN apt-get install -y gnupg ca-certificates software-properties-common
   RUN apt-get install -y git  libvulkan-dev libssl-dev libx11-dev zlib1g-dev libxext-dev
 
   RUN cd /tmp && git clone https://gitlab.kitware.com/cmake/cmake.git 
