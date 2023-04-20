@@ -4,14 +4,14 @@ on:
     - cron: '0 23 * * 6'  
       push:   
         branches: [ "main" ]
-        paths: 
-          - '**.yml'
-          - 'Dockerfile'
+        # paths: 
+        #   - '**.yml'
+        #   - 'Dockerfile'
       pull_request:
         branches: ["main"]
-        paths: 
-          - '**.yml'
-          - 'Dockerfile'
+        # paths: 
+        #   - '**.yml'
+        #   - 'Dockerfile'
         
 jobs:
   publish-env-crucible-docker-image:
