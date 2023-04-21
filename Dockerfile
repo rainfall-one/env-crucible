@@ -1,4 +1,4 @@
-FROM --platform=$TARGETPLATFORM debian:stable-slim
+FROM --platform=$TARGETPLATFORM mcr.microsoft.com/devcontainers/rust:0-1-bullseye
 LABEL org.opencontainers.image.authors="rajesh@rainfall.one"
 
     # Dependencies

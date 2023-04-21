@@ -17,9 +17,8 @@ jobs:
   publish-env-crucible-docker-image:
     runs-on: ubuntu-latest
     permissions:
-      packages: write
       contents: read
-      id-token: write
+      packages: write
 
     steps:
     -
@@ -53,7 +52,7 @@ jobs:
         context: .
         platforms: linux/arm64, linux/amd64
         push: true
-        tags: ghcr.io/rainfall/env-crucible:latest
+        tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}:latest
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
