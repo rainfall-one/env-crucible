@@ -13,6 +13,9 @@ on:
 
 jobs:
   call-publisher-flow:
+    permissions:
+      contents: read
+      packages: write
     uses: ./.github/workflows/publish.yml
     with:
       secrets: inherit
