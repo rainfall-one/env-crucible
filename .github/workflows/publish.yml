@@ -1,17 +1,9 @@
-name: publish env-crucible
+name: build and publish env-crucible
 on: 
-  schedule:    
-    - cron: '0 23 * * 6'  
-  push:   
-    branches: [ "main" ]
-    paths:
-      - '**.yml'
-      - 'Dockerfile'
-  pull_request:
-    branches: ["main"]
-    paths: 
-      - '**.yml'
-      - 'Dockerfile'
+  workflow_call:
+    secrets:
+      GITHUB_TOKEN:
+        required : true
         
 jobs:
   publish-env-crucible-docker-image:

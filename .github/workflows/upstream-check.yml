@@ -1,0 +1,30 @@
+name: Check upstream Docker image for multiple platforms
+
+on:
+  schedule:
+    - cron:  '0 4 * * 6'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      needs-updating: ${{ steps.check.outputs.needs-updating }}
+    steps:
+      - name: Check if update available
+        id: check
+        uses: lucacome/docker-image-update-checker@v1
+        with:
+          base-image: mcr.microsoft.com/devcontainers/rust:dev-bullseye
+          image: gchr.io/rainfall-one/env-crucible
+          platforms: linux/amd64,linux/arm64
+        env:
+          DEBUG: ${{ secrets.ACTIONS_STEP_DEBUG }}
+
+build:
+    needs: check
+    runs-on: ubuntu-latest
+    if: needs.check.outputs.needs-updating == 'true'
+    steps:
+      - name: Call publisher
+        uses: ./.github/workflows/publish.yml
+        secrets: inherit
