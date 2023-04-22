@@ -15,7 +15,10 @@ jobs:
   call-publisher-flow:
     runs-on: ubuntu-latest
     steps:
-      - name: Call publisher
-        uses: ./.github/workflows/publish.yml
-        with:
-          secrets: inherit
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Call publisher
+      uses: ./.github/workflows/publish.yml
+      with:
+        secrets: inherit
