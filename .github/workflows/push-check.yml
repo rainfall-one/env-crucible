@@ -13,6 +13,6 @@ on:
 
 jobs:
   call-publisher-flow:
-    uses: ./.github/workflows/publish
+    uses: ./.github/workflows/publish.yml
     with:
       secrets: inherit
