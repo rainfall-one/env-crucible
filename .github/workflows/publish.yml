@@ -2,7 +2,8 @@ name: build and publish env-crucible
 on: 
   workflow_call:
     secrets:
-      token : ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN:
+        required : true
 jobs:
   publish-env-crucible-docker-image:
     runs-on: crucible-one, crucible-two, crucible-three, crucible-four
