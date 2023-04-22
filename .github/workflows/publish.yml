@@ -1,7 +1,6 @@
 name: build and publish env-crucible
 on: 
   workflow_call:
-    secrets:
         
 jobs:
   publish-env-crucible-docker-image:
