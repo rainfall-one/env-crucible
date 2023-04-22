@@ -5,7 +5,7 @@ on:
         
 jobs:
   publish-env-crucible-docker-image:
-    runs-on: ubuntu-latest
+    runs-on: crucible-one, crucible-two, crucible-three, crucible-four
     permissions:
       contents: read
       packages: write

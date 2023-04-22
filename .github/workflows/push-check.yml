@@ -17,4 +17,5 @@ jobs:
     steps:
       - name: Call publisher
         uses: ./.github/workflows/publish.yml
+        with:
         secrets: inherit
