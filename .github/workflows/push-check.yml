@@ -18,4 +18,4 @@ jobs:
       - name: Call publisher
         uses: ./.github/workflows/publish.yml
         with:
-        secrets: inherit
+          secrets: inherit
