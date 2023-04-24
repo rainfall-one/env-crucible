@@ -8,7 +8,7 @@ jobs:
   check:
     runs-on: ["zero.one", "zero.two", "zero.three", "zero.four", ubuntu-latest]
     outputs:
-      needs-updating: ${{ steps.check-base-image.outputs.needs-updating }}
+      needs-updating: ${{ steps.check.outputs.needs-updating }}
     steps:
       - name: Check if update available
         id: check
@@ -22,7 +22,7 @@ jobs:
 
   publish:
     needs: check
-    if: needs.check-base-image.outputs.needs-updating == 'true'
+    if: needs.check.outputs.needs-updating == 'true'
     permissions:
       contents: read
       packages: write
