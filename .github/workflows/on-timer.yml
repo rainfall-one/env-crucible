@@ -6,7 +6,7 @@ on:
 
 jobs:
   check:
-    runs-on: ["zero.one", "zero.two", "zero.three", "zero.four", ubuntu-latest]
+    runs-on: ubuntu-latest
     outputs:
       needs-updating: ${{ steps.check.outputs.needs-updating }}
     steps:
@@ -26,6 +26,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-    uses: ./.github/workflows/publish.yml
+    uses: ./.github/workflows/publisher.yml
     secrets: inherit
     
