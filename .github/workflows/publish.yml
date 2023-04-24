@@ -4,7 +4,7 @@ on:
 
 jobs:
   publish:
-    runs-on: 'zero.one', 'zero.two', 'zero.three', 'zero.four', ubuntu-latest
+    runs-on: ["zero.one", "zero.two", "zero.three", "zero.four", ubuntu-latest]
     
     permissions:
       contents: read
