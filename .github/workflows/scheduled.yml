@@ -2,13 +2,13 @@ name: Check upstream Docker image for multiple platforms
 
 on:
   schedule:
-    - cron:  '0 4 * * 6'
+    - cron:  '0 6 * * 23'
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
+  check-base-image:
+    runs-on: 'zero.one', 'zero.two', 'zero.three', 'zero.four', ubuntu-latest
     outputs:
-      needs-updating: ${{ steps.check.outputs.needs-updating }}
+      needs-updating: ${{ steps.check-base-image.outputs.needs-updating }}
     steps:
       - name: Check if update available
         id: check
@@ -20,11 +20,12 @@ jobs:
         env:
           DEBUG: ${{ secrets.ACTIONS_STEP_DEBUG }}
 
-build:
-    needs: check
-    runs-on: ubuntu-latest
-    if: needs.check.outputs.needs-updating == 'true'
-    steps:
-      - name: Call publisher
-        uses: ./.github/workflows/publish.yml
-        secrets: inherit
+  call-publisher-flow:
+    needs: check-base-image
+    if: needs.check-base-image.outputs.needs-updating == 'true'
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/publish.yml
+    secrets: inherit
+    
