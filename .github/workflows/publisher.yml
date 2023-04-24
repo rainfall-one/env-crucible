@@ -4,7 +4,7 @@ on:
 
 jobs:
   publish:
-    runs-on: Zero-One, Zero-Two, Zero-Three, Zero-Four, ubuntu-latest
+    runs-on: self-hosted, ubuntu-latest
     
     permissions:
       contents: read
