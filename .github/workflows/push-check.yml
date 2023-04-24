@@ -4,13 +4,11 @@ on:
     branches: [ "main" ]
     paths:
       - '**.yml'
-      - '!*scheduled*.yml'
       - 'Dockerfile'
   pull_request:
     branches: ["main"]
     paths: 
       - '**.yml'
-      - '!*scheduled*.yml'
       - 'Dockerfile'
 
 jobs:
