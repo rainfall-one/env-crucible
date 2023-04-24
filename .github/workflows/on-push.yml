@@ -1,4 +1,4 @@
-name: Check for push valid push events
+name: On Push
 on: 
   push:   
     branches: [ "main" ]

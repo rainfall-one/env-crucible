@@ -1,4 +1,4 @@
-name: Check upstream Docker image for multiple platforms
+name: Scheduled Run
 
 on:
   schedule:
