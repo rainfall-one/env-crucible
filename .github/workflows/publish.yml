@@ -3,7 +3,7 @@ on:
   workflow_call:
 
 jobs:
-  publish-env-crucible-docker-image:
+  publish:
     runs-on: 'zero.one', 'zero.two', 'zero.three', 'zero.four', ubuntu-latest
     
     permissions:
