@@ -26,6 +26,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-    uses: ./.github/workflows/publish.yml
+    uses: ./.github/workflows/publisher.yml
     secrets: inherit
     
