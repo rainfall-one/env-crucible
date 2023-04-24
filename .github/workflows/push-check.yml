@@ -12,7 +12,7 @@ on:
       - 'Dockerfile'
 
 jobs:
-  publish:
+  call_publisher:
     permissions:
       contents: read
       packages: write

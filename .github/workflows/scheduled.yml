@@ -2,7 +2,7 @@ name: Check upstream Docker image for multiple platforms
 
 on:
   schedule:
-    - cron:  '0 6 * * 23'
+    - cron:  '0 23 * * 6'
 
 jobs:
   check:
