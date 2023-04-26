@@ -1,4 +1,4 @@
-name: Scheduled Run
+name: On Schedule
 
 on:
   schedule:

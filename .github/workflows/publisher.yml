@@ -3,7 +3,7 @@ on:
   workflow_call:
 
 jobs:
-  publish:
+  main:
     runs-on: self-hosted
     
     permissions:
