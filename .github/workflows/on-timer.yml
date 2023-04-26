@@ -5,24 +5,8 @@ on:
     - cron:  '0 23 * * 6'
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    outputs:
-      needs-updating: ${{ steps.check.outputs.needs-updating }}
-    steps:
-      - name: Check if update available
-        id: check
-        uses: lucacome/docker-image-update-checker@v1
-        with:
-          base-image: mcr.microsoft.com/devcontainers/rust:dev-bullseye
-          image: gchr.io/rainfall-one/env-crucible
-          platforms: linux/amd64,linux/arm64
-        env:
-          DEBUG: ${{ secrets.ACTIONS_STEP_DEBUG }}
-
+  
   publish:
-    needs: check
-    if: needs.check.outputs.needs-updating == 'true'
     permissions:
       contents: read
       packages: write
