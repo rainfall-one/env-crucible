@@ -21,9 +21,9 @@ jobs:
           arch: amd64
           verbose: true
 
-      - name: Cache Deletion
-        if: steps.current_image.needs_updating == 'true'
-        run: |
+    - name: Cache Deletion
+      if: steps.current_image.needs_updating == 'true'
+      run: |
           gh extension install actions/gh-actions-cache
           
           REPO=${{ github.repository }}
@@ -39,8 +39,8 @@ jobs:
               gh actions-cache delete $cacheKey -R $REPO  --confirm
           done
           echo "Done"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   
 
