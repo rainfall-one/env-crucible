@@ -1,4 +1,4 @@
-name: Build and Publish Crucible
+name: Build and Publish
 on: 
   workflow_call:
 
@@ -17,8 +17,6 @@ jobs:
         with:
           base-image: mcr.microsoft.com/devcontainers/rust:dev-bullseye
           image: ghcr.io/${{ github.repository }}-checker:latest
-          os: linux
-          arch: amd64
           verbose: true
         continue-on-error: true
 
