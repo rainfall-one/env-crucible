@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Check if update available
+      - name: Base Image Checker
         id: current_image
         uses: giggio/docker-image-update-checker@v2
         with:
@@ -20,6 +20,7 @@ jobs:
           os: linux
           arch: amd64
           verbose: true
+        continue-on-error: true
 
       - name: Cache Deletion
         if: steps.current_image.needs_updating == 'true'
@@ -29,12 +30,12 @@ jobs:
           REPO=${{ github.repository }}
 
           echo "Fetching list of cache key"
-          cacheKeysForPR=$(gh actions-cache list -R $REPO  | cut -f 1 )
+          cacheKeys=$(gh actions-cache list -R $REPO  | cut -f 1 )
 
           ## Setting this to not fail the workflow while deleting cache keys. 
           set +e
           echo "Deleting caches..."
-          for cacheKey in $cacheKeysForPR
+          for cacheKey in $cacheKeys
           do
               gh actions-cache delete $cacheKey -R $REPO  --confirm
           done
@@ -46,6 +47,7 @@ jobs:
 
   main:
     runs-on: self-hosted
+    needs: check
     permissions:
       packages: write
 
@@ -93,7 +95,7 @@ jobs:
         # Temp fix
         # https://github.com/docker/build-push-action/issues/252
         # https://github.com/moby/buildkit/issues/1896
-        name: Move cache
+        name: Cache Mover
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache  
