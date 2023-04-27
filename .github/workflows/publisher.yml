@@ -12,14 +12,14 @@ jobs:
     
     steps:
       - name: Check if update available
-          id: current_image
-          uses: giggio/docker-image-update-checker@v2
-          with:
-            base-image: mcr.microsoft.com/devcontainers/rust:dev-bullseye
-            image: ghcr.io/${{ github.repository }}-checker:latest
-            os: linux
-            arch: amd64
-            verbose: true
+        id: current_image
+        uses: giggio/docker-image-update-checker@v2
+        with:
+          base-image: mcr.microsoft.com/devcontainers/rust:dev-bullseye
+          image: ghcr.io/${{ github.repository }}-checker:latest
+          os: linux
+          arch: amd64
+          verbose: true
       - name: Cache Deletion
         if: steps.current_image.needs_updating == 'true'
         run: |
