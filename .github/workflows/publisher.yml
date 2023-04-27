@@ -20,6 +20,7 @@ jobs:
           os: linux
           arch: amd64
           verbose: true
+
       - name: Cache Deletion
         if: steps.current_image.needs_updating == 'true'
         run: |
@@ -41,13 +42,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  cleanup:
-    runs-on: ubuntu-latest
-    needs: check
-    permissions:
-      actions: write
-      contents: read
-    
+  
 
   main:
     runs-on: self-hosted
