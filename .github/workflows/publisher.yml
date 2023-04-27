@@ -2,13 +2,13 @@ name: Build and Publish Crucible
 on: 
   workflow_call:
 
+permissions:
+      actions: write
+      contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
-    permissions:
-      actions: write
-      contents: read
-      packages: read
     
     steps:
       - name: Check if update available
@@ -47,7 +47,6 @@ jobs:
   main:
     runs-on: self-hosted
     permissions:
-      contents: read
       packages: write
 
     steps:
